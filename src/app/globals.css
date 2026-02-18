@@ -24,3 +24,34 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+/* Custom Scrollbar para el Sidebar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1e40af; /* Azul oscuro */
+  border-radius: 10px;
+}
+
+/* Estilo base para todos los músculos */
+.muscle {
+  fill: #333; /* Gris oscuro por defecto */
+  transition: fill 0.5s ease, filter 0.5s ease;
+}
+
+/* Clase para iluminar (Cyan/Blue Cyberpunk) */
+.muscle-active {
+  fill: #3b82f6; /* Azul brillante */
+  filter: drop-shadow(0 0 8px #3b82f6);
+}
+
+/* Clase para Fatiga alta (Rojo) */
+.muscle-fatigue {
+  fill: #ef4444;
+  filter: drop-shadow(0 0 8px #ef4444);
+}
