@@ -36,9 +36,11 @@ export default function RegisterCharacter() {
             const res = await createCharacter(data);
             alert(`¡Personaje ${data.nick} inicializado con éxito!`);
             router.push('/');
-        } catch (err: unknown) {
+        } catch (err: unknown) { // 4. Usamos 'unknown' en lugar de 'any' para evitar errores de Build
             console.error("Error en el fetch:", err);
-            alert(err.message || "Error al conectar con el servidor");
+            // Manejo de errores seguro para TypeScript
+            const errorMessage = err instanceof Error ? err.message : "Error al conectar con el servidor";
+            alert(errorMessage);
         }
     };
 
@@ -51,7 +53,7 @@ export default function RegisterCharacter() {
                 </div>
 
                 {/* handleSubmit recibe dos funciones: una para éxito y otra para error */}
-                <form onSubmit={handleSubmit(onSubmit, onInvalid)} className="p-6 space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         
                         {/* Nickname */}
