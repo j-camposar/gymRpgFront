@@ -28,10 +28,7 @@ export default function RegisterCharacter() {
         }
     });
 
-    // Función para ver por qué no hace el fetch si hay errores
-    const onInvalid = (errors: any) => {
-        console.log("Errores de validación que bloquean el fetch:", errors);
-    };
+   
     const router = useRouter();
     const onSubmit = async (data: FormData) => {
         console.log("Intentando fetch con datos:", data);
@@ -39,7 +36,7 @@ export default function RegisterCharacter() {
             const res = await createCharacter(data);
             alert(`¡Personaje ${data.nick} inicializado con éxito!`);
             router.push('/');
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Error en el fetch:", err);
             alert(err.message || "Error al conectar con el servidor");
         }

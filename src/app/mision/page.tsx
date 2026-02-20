@@ -1,6 +1,6 @@
 'use client';
 
-import { claimMission, getActiveMissions } from '@/services/mision.api';
+// import { claimMission, getActiveMissions } from '@/services/mision.api';
 import { useEffect, useState } from 'react';
 
 import { useSelector } from "react-redux";
