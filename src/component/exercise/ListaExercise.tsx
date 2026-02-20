@@ -16,29 +16,34 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
         getExercises().then(setExercises).finally(() => setLoading(false));
     }, []);
 
-    if (loading) return <div className="p-20 text-center text-blue-500 font-mono animate-pulse">Buscando Ejercicios</div>;
+    if (loading) return (
+        <div className="flex flex-col items-center justify-center h-64 text-blue-500 font-mono animate-pulse">
+            <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+            BUSCANDO PROTOCOLOS...
+        </div>
+    );
 
     return (
-        <div className="w-full flex flex-col h-[700px] bg-[#050505] p-4 rounded-3xl border border-blue-500/20 shadow-[0_0_50px_rgba(37,99,235,0.1)]">
+        /* Cambié h-[700px] por h-screen o h-[85vh] para que se adapte al alto del celular */
+        <div className="w-full flex flex-col h-[82vh] md:h-[700px] bg-[#050505] p-3 md:p-6 rounded-t-3xl md:rounded-3xl border border-blue-500/20">
             
-            {/* Header Estilo Terminal */}
-            <div className="flex items-center justify-between mb-8 px-6">
+            {/* Header más compacto para móvil */}
+            <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 md:mb-8 px-2">
                 <div className="space-y-1">
-                    <h2 className="text-blue-500 font-black italic tracking-[0.3em] text-lg uppercase">
-                        Registrar Ejercicios
+                    <h2 className="text-blue-500 font-black italic tracking-[0.2em] text-sm md:text-lg uppercase">
+                        Seleccionar Protocolo
                     </h2>
-                    <div className="h-[2px] w-full bg-gradient-to-r from-blue-600 to-transparent"></div>
+                    <div className="h-[1px] w-24 bg-blue-600"></div>
                 </div>
-                <div className="text-right">
-                    <span className="text-[10px] text-blue-400/50 font-mono block uppercase">Ejercicios Cargados</span>
-                    <span className="text-blue-400 font-black text-xs bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/30">
-                        {exercises.length} PROTOCOLOS
+                <div className="mt-2 md:mt-0">
+                    <span className="text-blue-400 font-black text-[10px] bg-blue-500/10 px-2 py-1 rounded-md border border-blue-500/30">
+                        {exercises.length} CARGADOS
                     </span>
                 </div>
             </div>
 
-            {/* Contenedor de Lista con Scroll Estilizado */}
-            <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar space-y-6">
+            {/* Lista con scroll optimizado para touch */}
+            <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 pb-10">
                 {exercises.map((ex) => {
                     const musclesNames = ex.muscles.map(m => m.muscleId.name.toLowerCase().trim());
                     const showBackView = musclesNames.some(name => POSTERIOR_LIST.includes(name));
@@ -47,47 +52,40 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                         <div
                             key={ex._id}
                             onClick={() => setSelectedExercise(ex)}
-                            className="group relative p-[1px] rounded-[2rem] bg-gradient-to-b from-blue-500/40 to-transparent transition-all duration-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.2)]"
+                            className="group active:scale-[0.98] transition-all duration-200"
                         >
-                            {/* Fondo Interno (Contenedor con Borde Neón) */}
-                            <div className="bg-[#0a0a0a] rounded-[2rem] p-6 flex gap-8 items-center border border-white/5 relative overflow-hidden">
+                            <div className="bg-[#0a0a0a] rounded-2xl p-3 md:p-5 flex gap-4 md:gap-8 items-center border border-white/5 relative overflow-hidden">
                                 
-                                {/* 1. MARCO DEL SVG (Con borde de luz) */}
+                                {/* 1. SVG MINIATURA (Optimizado para móvil) */}
                                 <div className="flex-shrink-0 relative">
-                                    <div className="absolute -inset-1 bg-blue-600/20 blur-md rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    <div className="relative bg-black p-4 rounded-2xl border border-blue-500/30 shadow-inner group-hover:border-blue-400 transition-all duration-500">
-                                        <div className="text-[8px] text-blue-500/40 mb-2 font-mono text-center tracking-tighter uppercase">
-                                            {showBackView ? 'Bio_Map_Back' : 'Bio_Map_Front'}
-                                        </div>
+                                    <div className="relative bg-black p-2 md:p-4 rounded-xl border border-blue-500/20 group-hover:border-blue-400 transition-all">
                                         {showBackView ? (
-                                            <BodyMapBack activeMuscles={musclesNames} className="w-28 h-auto" />
+                                            <BodyMapBack activeMuscles={musclesNames} className="w-14 md:w-28 h-auto" />
                                         ) : (
-                                            <BodyMapFront activeMuscles={musclesNames} className="w-28 h-auto" />
+                                            <BodyMapFront activeMuscles={musclesNames} className="w-14 md:w-28 h-auto" />
                                         )}
-                                        {/* Indicador de "Luz" lateral en el marco del monito */}
-                                        <div className="absolute left-0 top-1/4 bottom-1/4 w-[2px] bg-blue-500 shadow-[0_0_10px_#3b82f6]"></div>
                                     </div>
                                 </div>
 
-                                {/* 2. INFO DEL EJERCICIO */}
-                                <div className="flex-1">
-                                    <div className="flex items-center gap-4 mb-4">
-                                        <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter group-hover:text-blue-400 transition-colors">
+                                {/* 2. INFO DEL EJERCICIO (Tipografía escalable) */}
+                                <div className="flex-1 min-w-0">
+                                    <div className="flex flex-col mb-2">
+                                        <h3 className="text-lg md:text-2xl font-black text-white uppercase italic tracking-tighter truncate">
                                             {ex.name}
                                         </h3>
-                                        <span className="text-[10px] text-gray-700 bg-gray-900 px-2 py-1 rounded font-mono">
-                                            ID_{ex._id.slice(-4).toUpperCase()}
+                                        <span className="text-[8px] text-gray-700 font-mono">
+                                            CODE_{ex._id.slice(-4).toUpperCase()}
                                         </span>
                                     </div>
 
-                                    <div className="flex flex-wrap gap-3">
+                                    {/* Músculos en formato Tag compacto */}
+                                    <div className="flex flex-wrap gap-1.5">
                                         {ex.muscles.map((musculo, index) => (
-                                            <div key={index} className="flex items-center gap-3 bg-blue-900/10 px-4 py-2 rounded-xl border border-blue-500/20 group-hover:border-blue-500/40 transition-all">
-                                                <span className="text-xs text-gray-400 font-bold uppercase">
+                                            <div key={index} className="flex items-center gap-1.5 bg-blue-900/10 px-2 py-1 rounded-md border border-blue-500/10">
+                                                <span className="text-[9px] text-gray-400 font-bold uppercase truncate max-w-[60px]">
                                                     {musculo.muscleId.name}
                                                 </span>
-                                                <div className="w-[1px] h-4 bg-blue-500/30"></div>
-                                                <span className="text-sm text-blue-500 font-mono font-black italic">
+                                                <span className="text-[10px] text-blue-500 font-black italic">
                                                     x{musculo.multiplier}
                                                 </span>
                                             </div>
@@ -95,8 +93,8 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                                     </div>
                                 </div>
 
-                                {/* Decoración de la barra lateral derecha (estilo scrollbar del dibujo) */}
-                                <div className="absolute right-0 top-0 bottom-0 w-1 bg-blue-600/10 group-hover:bg-blue-600/40 transition-all"></div>
+                                {/* Barra de selección lateral */}
+                                <div className="absolute right-0 top-0 bottom-0 w-1 bg-blue-600/20 group-hover:bg-blue-500 transition-all"></div>
                             </div>
                         </div>
                     );

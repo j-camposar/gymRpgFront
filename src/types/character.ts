@@ -8,6 +8,11 @@ export enum CharacterGoal {
   BAJAR_PESO = 'BAJAR_PESO',
   AUMENTAR_FUERZA = 'AUMENTAR_FUERZA',
 }
+export enum Sexo {
+  Masculino = 'Masculino',
+  Femenino = 'Femenino',
+  Otro = 'Otro'
+}
 
 export interface CreateCharacterDto {
   nick: string;
@@ -15,4 +20,7 @@ export interface CreateCharacterDto {
   peso: number;
   estatura: number;
   objetivo: CharacterGoal;
+  email: string;
+  password:string;
+  sexo:string;
 }

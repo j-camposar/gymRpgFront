@@ -88,7 +88,7 @@ export default function TrainingForm({ onClose, character_id, setRefreshTrigger,
                   <label className="text-xs text-gray-400 uppercase font-semibold">Peso (KG)</label>
                   <input
                     type="number"
-                    step="0.5"
+                    step="10"
                     value={weight}
                     onChange={(e) => setWeight(Number(e.target.value))}
                     className="w-full bg-[#0f0f0f] border border-gray-800 rounded-lg p-3 text-white focus:border-blue-500 outline-none"

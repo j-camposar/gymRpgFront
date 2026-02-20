@@ -14,13 +14,13 @@ const Login: React.FC = () => {
     const [error, setError] = useState("");
     const router = useRouter();
 
-   const handleLogin = async (e: React.FormEvent) => {
+    const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
         try {
             console.log("1. Enviando credenciales...");
-            const data = await login({ email, password }) as LoginResponse;;
-            console.log("2. Respuesta recibida:", data); // Mira si el token y el ID están aquí
+            const data = await login({ email, password }) as LoginResponse;
+            console.log("2. Respuesta recibida:", data);
 
             dispatch(loginSuccess({
                 id: data.user.id,
@@ -40,10 +40,8 @@ const Login: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center p-4 font-sans">
-            {/* Contenedor con brillo perimetral */}
             <div className="w-full max-w-md bg-[#111] border border-gray-800 p-8 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] relative overflow-hidden">
                 
-                {/* Decoración de fondo (Sutil degradado) */}
                 <div className="absolute -top-24 -left-24 w-48 h-48 bg-blue-600/10 rounded-full blur-3xl"></div>
 
                 <div className="relative z-10">
@@ -79,15 +77,26 @@ const Login: React.FC = () => {
                             />
                         </div>
 
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full group relative py-4 bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest rounded-xl transition-all shadow-[0_4px_20px_rgba(37,99,235,0.3)] active:scale-95 disabled:opacity-50"
-                        >
-                            <span className="relative z-10">
-                                {loading ? "Autenticando..." : "Entrar a la Terminal"}
-                            </span>
-                        </button>
+                        <div className="flex flex-col gap-4">
+                            <button
+                                type="submit"
+                                disabled={loading}
+                                className="w-full group relative py-4 bg-blue-600 hover:bg-blue-500 text-white font-black uppercase tracking-widest rounded-xl transition-all shadow-[0_4px_20px_rgba(37,99,235,0.3)] active:scale-95 disabled:opacity-50"
+                            >
+                                <span className="relative z-10">
+                                    {loading ? "Autenticando..." : "Entrar a la Terminal"}
+                                </span>
+                            </button>
+
+                            {/* BOTÓN DE REGISTRO / CREAR PERSONAJE */}
+                            <button
+                                type="button"
+                                onClick={() => router.push("/character")}
+                                className="w-full py-4 bg-transparent border border-gray-800 hover:border-blue-500/50 hover:bg-blue-500/5 text-gray-400 hover:text-blue-400 font-bold uppercase tracking-widest rounded-xl transition-all active:scale-95 text-xs"
+                            >
+                                Nuevo Atleta // Crear Personaje
+                            </button>
+                        </div>
 
                         {error && (
                             <div className="bg-red-500/10 border border-red-500/50 p-3 rounded-lg animate-shake">
