@@ -3,9 +3,9 @@ export interface StatBarProps {
   refreshTrigger?: boolean | number; // Para forzar actualización desde el padre
 }
 export interface StateUser{
-    nombre :String;
-    valor : String ;
-    max :String;
+    nombre :string;
+    valor : string ;
+    max :string;
 }
 export interface StatsMuscle {
   level: number;
