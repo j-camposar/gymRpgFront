@@ -1,6 +1,6 @@
 export interface StatBarProps {
   character_id: string | number;
-  refreshTrigger?: any; // Para forzar actualización desde el padre
+  refreshTrigger?: boolean | number; // Para forzar actualización desde el padre
 }
 export interface StateUser{
     nombre :String;
