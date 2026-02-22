@@ -50,7 +50,6 @@ export default function MissionList({
 
       {misiones.map((mision) => (
         <div key={mision.id} className="relative group">
-          {/* Header de la Misión */}
           <div className="flex justify-between items-start mb-2">
             <div className="max-w-[70%]">
               <h4 className="text-[11px] font-black uppercase tracking-tighter text-gray-100 group-hover:text-yellow-500 transition-colors">
@@ -67,15 +66,13 @@ export default function MissionList({
             </div>
           </div>
 
-          {/* Reutilización de tu StatBar con lógica de incremento */}
           <StatBar 
             label="Progreso Misión" 
             value={mision.progress} 
             max={mision.targetXp || 100} 
-            color="#eab308" // Amarillo para misiones
+            color="#eab308" 
           />
 
-          {/* Acción de Reclamo o Estado Finalizado */}
           <div className="mt-2">
             {mision.completed && !mision.claimed && (
               <button 

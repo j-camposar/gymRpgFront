@@ -8,11 +8,8 @@ import {  useState } from 'react';
 
 import { useSelector } from "react-redux";
 import { RootState } from '@/store/store';
-import MuscleStats from '@/component/character/MuscleStats';
 import WorkoutSummary from '@/component/statBar/workResult';
 import { StatsResume } from '@/types/statBar';
-import BodyMapFront from '@/component/statBar/bodyMapFront';
-import CharacterHeader from '@/component/character/CharacterHeader';
 import PlnatillaState from '@/component/statBar/PlantillaState';
 import MissionList from '@/component/mision/MisionList';
 
@@ -21,8 +18,8 @@ export default function TrainingPage() {
     const [refreshTrigger, setRefreshTrigger] = useState<boolean>(false);
     const user = useSelector((state: RootState) => state.auth.user) as { id: string } | null;
     const character_id = user?.id || "";
-    const [isStatsOpen, setIsStatsOpen] = useState(true);
-    const [isMissionsOpen, setIsMissionsOpen] = useState(true);
+    const [isStatsOpen, setIsStatsOpen] = useState(false);
+    const [isMissionsOpen, setIsMissionsOpen] = useState(false);
     const handleRefresh = () => {
         setRefreshTrigger(prev => !prev);
     };
@@ -126,7 +123,12 @@ export default function TrainingPage() {
                 </div>
             )}
             </section>
-            <aside className={`${isMissionsOpen ? 'w-[400px]' : 'w-12'} border-l border-gray-800 flex flex-col bg-[#0d0d0d] transition-all duration-300 relative`}>
+           <aside className={`
+                        ${isMissionsOpen ? 'w-[85vw] md:w-[500px]' : 'w-12'} 
+                    fixed md:relative right-0 top-0 h-full z-40
+                    border-l border-gray-800 flex flex-col bg-[#0d0d0d] 
+                    transition-all duration-300 shadow-2xl md:shadow-none
+                    `}>
                     <button 
                         onClick={() => setIsMissionsOpen(!isMissionsOpen)} 
                         className="absolute -left-3 top-10 z-20 bg-yellow-600 rounded-full p-1 border border-yellow-400 hover:scale-110 transition-transform"

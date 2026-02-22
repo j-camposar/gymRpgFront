@@ -18,7 +18,7 @@ export default function CharacterHeader({ perfil }: { perfil: EstadoCharacter | 
             </span>
           </div>
           <div className="bg-yellow-500/10 border border-yellow-500/50 px-3 py-1 rounded-md flex items-center gap-2">
-            <span className="text-yellow-500 text-xs font-bold">CORE_COINS:</span>
+            <span className="text-yellow-500 text-xs font-bold">COINS:</span>
             <span className="text-white font-mono">{perfil.coins}</span>
           </div>
         </div>
