@@ -24,10 +24,7 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
     );
 
     return (
-        /* Cambié h-[700px] por h-screen o h-[85vh] para que se adapte al alto del celular */
         <div className="w-full flex flex-col h-[82vh] md:h-[700px] bg-[#050505] p-3 md:p-6 rounded-t-3xl md:rounded-3xl border border-blue-500/20">
-            
-            {/* Header más compacto para móvil */}
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 md:mb-8 px-2">
                 <div className="space-y-1">
                     <h2 className="text-blue-500 font-black italic tracking-[0.2em] text-sm md:text-lg uppercase">
@@ -42,7 +39,6 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                 </div>
             </div>
 
-            {/* Lista con scroll optimizado para touch */}
             <div className="flex-1 overflow-y-auto custom-scrollbar space-y-3 pb-10">
                 {exercises.map((ex) => {
                     const musclesNames = ex.muscles.map(m => m.muscleId.name.toLowerCase().trim());
@@ -56,7 +52,6 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                         >
                             <div className="bg-[#0a0a0a] rounded-2xl p-3 md:p-5 flex gap-4 md:gap-8 items-center border border-white/5 relative overflow-hidden">
                                 
-                                {/* 1. SVG MINIATURA (Optimizado para móvil) */}
                                 <div className="flex-shrink-0 relative">
                                     <div className="relative bg-black p-2 md:p-4 rounded-xl border border-blue-500/20 group-hover:border-blue-400 transition-all">
                                         {showBackView ? (
@@ -67,7 +62,6 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                                     </div>
                                 </div>
 
-                                {/* 2. INFO DEL EJERCICIO (Tipografía escalable) */}
                                 <div className="flex-1 min-w-0">
                                     <div className="flex flex-col mb-2">
                                         <h3 className="text-lg md:text-2xl font-black text-white uppercase italic tracking-tighter truncate">
@@ -78,7 +72,6 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                                         </span>
                                     </div>
 
-                                    {/* Músculos en formato Tag compacto */}
                                     <div className="flex flex-wrap gap-1.5">
                                         {ex.muscles.map((musculo, index) => (
                                             <div key={index} className="flex items-center gap-1.5 bg-blue-900/10 px-2 py-1 rounded-md border border-blue-500/10">
@@ -93,7 +86,6 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                                     </div>
                                 </div>
 
-                                {/* Barra de selección lateral */}
                                 <div className="absolute right-0 top-0 bottom-0 w-1 bg-blue-600/20 group-hover:bg-blue-500 transition-all"></div>
                             </div>
                         </div>

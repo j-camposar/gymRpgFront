@@ -4,7 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createCharacter } from '@/services/character.api';
 import { registerSchema } from '@/schema/RegisterCharacter';
 import { CharacterGoal } from '@/types/character';
-import { useState } from 'react';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
 
@@ -33,7 +32,7 @@ export default function RegisterCharacter() {
     const onSubmit = async (data: FormData) => {
         console.log("Intentando fetch con datos:", data);
         try {
-            const res = await createCharacter(data);
+            await createCharacter(data);
             alert(`¡Personaje ${data.nick} inicializado con éxito!`);
             router.push('/');
         } catch (err: unknown) { // 4. Usamos 'unknown' en lugar de 'any' para evitar errores de Build

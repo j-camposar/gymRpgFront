@@ -44,7 +44,7 @@ export default function MissionList({
     <div className="space-y-8 p-2">
       {misiones.length === 0 && (
         <p className="text-[10px] text-gray-600 italic uppercase tracking-widest text-center py-10 border border-dashed border-gray-800 rounded-xl">
-          // No hay protocolos activos //
+           No hay protocolos activos 
         </p>
       )}
 
