@@ -1,41 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { getStat } from "@/services/state.api";
-import { StatsMuscle } from "@/types/statBar";
+import { EstadoActual, EstadoCharacter, StatsResponse,  } from "@/types/statBar";
 import StatBar from "../statBar/statBar";
 import BodyMapFront from "../statBar/bodyMapFront";
 import BodyMapBack from "../statBar/bodyMapBack";
 
 
-const MuscleStats = ({ character_id, refreshTrigger }: { character_id: string, refreshTrigger: boolean }) => {
-  const [stats, setStats] = useState<StatsMuscle[] | null>(null);
-  const [loading, setLoading] = useState(true);
-  
-  const POSTERIOR_MUSCLES = ["espalda"];
-  
-  const fetchData = async () => {
-    if (!character_id) return;
-    try {
-      const data = await getStat({ character_id }) as StatsMuscle[];
-      
-      setStats([...data.map(item => ({ ...item }))]);
-      
-    } catch (error) {
-      console.error("Error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [character_id, refreshTrigger]);
-
-  if (loading) return (
-    <div className="flex flex-col items-center justify-center p-10 h-full bg-[#050505]">
-      <div className="w-10 h-10 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-      <p className="mt-4 text-blue-500 font-mono text-[10px] tracking-[0.2em] animate-pulse">SCANNING...</p>
-    </div>
-  );
+const MuscleStats = ({ stats}: { stats: EstadoActual[]}) => {
+    const POSTERIOR_MUSCLES = ["espalda"];
 
   return (
     <div className="flex flex-col w-full h-full divide-y divide-gray-900 bg-[#050505] overflow-y-auto">

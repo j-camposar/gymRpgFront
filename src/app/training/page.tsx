@@ -12,6 +12,9 @@ import MuscleStats from '@/component/character/MuscleStats';
 import WorkoutSummary from '@/component/statBar/workResult';
 import { StatsResume } from '@/types/statBar';
 import BodyMapFront from '@/component/statBar/bodyMapFront';
+import CharacterHeader from '@/component/character/CharacterHeader';
+import PlnatillaState from '@/component/statBar/PlantillaState';
+import MissionList from '@/component/mision/MisionList';
 
 export default function TrainingPage() {
     const [open, setOpen] = useState(false);
@@ -19,6 +22,7 @@ export default function TrainingPage() {
     const user = useSelector((state: RootState) => state.auth.user) as { id: string } | null;
     const character_id = user?.id || "";
     const [isStatsOpen, setIsStatsOpen] = useState(true);
+    const [isMissionsOpen, setIsMissionsOpen] = useState(true);
     const handleRefresh = () => {
         setRefreshTrigger(prev => !prev);
     };
@@ -27,7 +31,7 @@ export default function TrainingPage() {
         <main className="h-screen bg-[#0a0a0a] text-white flex overflow-hidden font-sans">
             
             {/* SIDEBAR: STATS (Compacta y vertical) */}
-           <aside className={`${isStatsOpen ? 'w-[450px]' : 'w-12'} border-r border-gray-800 flex flex-col bg-[#0d0d0d] transition-all duration-300 relative`}>
+           <aside className={`${isStatsOpen ? 'w-[500px]' : 'w-12'} border-r border-gray-800 flex flex-col bg-[#0d0d0d] transition-all duration-300 relative`}>
                 
                 {/* Botón de cierre/apertura */}
                 <button 
@@ -38,17 +42,8 @@ export default function TrainingPage() {
                 </button>
 
                 <div className={`${isStatsOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition-opacity duration-300 flex flex-col h-full`}>
-                    <div className="p-4 border-b border-gray-800 bg-[#111] flex justify-between items-center">
-                        <div>
-                            <h2 className="text-sm font-black uppercase tracking-[0.2em] text-blue-500">
-                                Status
-                            </h2>
-                            <p className="text-[10px] text-gray-600 font-mono">ID: {character_id.slice(0,8)}</p>
-                        </div>
-                    </div>
-                    
                     <div className="flex-1 overflow-y-auto custom-scrollbar">
-                        <MuscleStats character_id={character_id} refreshTrigger={refreshTrigger}/>
+                        <PlnatillaState refreshTrigger={refreshTrigger} character_id={character_id}/>
                     </div>
                 </div>
             </aside>
@@ -97,7 +92,7 @@ export default function TrainingPage() {
                         </div>
                     </div>
                 </div>
-
+                    
                 {/* Footer simple para cerrar el diseño */}
                 <footer className="p-4 text-center">
                     <p className="text-[9px] text-gray-700 uppercase tracking-[0.3em]">Neural_Link_Established</p>
@@ -131,6 +126,26 @@ export default function TrainingPage() {
                 </div>
             )}
             </section>
+            <aside className={`${isMissionsOpen ? 'w-[400px]' : 'w-12'} border-l border-gray-800 flex flex-col bg-[#0d0d0d] transition-all duration-300 relative`}>
+                    <button 
+                        onClick={() => setIsMissionsOpen(!isMissionsOpen)} 
+                        className="absolute -left-3 top-10 z-20 bg-yellow-600 rounded-full p-1 border border-yellow-400 hover:scale-110 transition-transform"
+                    >
+                        {isMissionsOpen ? '✕' : 'M'}
+                    </button>
+
+                    <div className={`${isMissionsOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'} transition-opacity duration-300 flex flex-col h-full`}>
+                        <div className="flex-1 overflow-y-auto custom-scrollbar p-4">
+                            {/* Componente de Misiones con el color ámbar */}
+                            <MissionList character_id={character_id} refreshTrigger={refreshTrigger} />
+                            
+                            <div className="mt-8 border-t border-gray-800 pt-6">
+                                <h3 className="text-[10px] uppercase text-gray-500 mb-4 tracking-[0.2em]">Bio_Supplements</h3>
+                                {/* Aquí iría tu botón de Pre-entreno */}
+                            </div>
+                        </div>
+                    </div>
+                </aside>
         </main>
     );
 }

@@ -7,13 +7,31 @@ export interface StateUser{
     valor : string ;
     max :string;
 }
-export interface StatsMuscle {
-  level: number;
-  fatiga: number;
-  xp: number;
-  xpNeeded: number;
-  label:string;
-  hipertrofia:number;
+export interface EstadoCharacter {
+    nick: string;
+    level: number;
+    coins: number;
+    fatiga: number;
+    xp: number;
+    xpNeeded: number;
+    hipertrofia:number;
+    porcentajeProgreso: number;
+}
+
+export interface EstadoActual {
+    level: number;
+    fatiga: number;
+    xp: number;
+    xpNeeded: number;
+    label: string; // Ej: "Bíceps"
+    hipertrofia: number;
+    nick:string;
+    coins:number;
+}
+
+export interface StatsResponse {
+    estadoCharacter: EstadoCharacter;
+    estadoActual: EstadoActual[];
 }
 export interface StatsBarProps {
     label : string;

@@ -38,7 +38,16 @@ const StatBar: React.FC<StatsBarProps> = ({ label, value, max, color }) => {
         // 2. Si el valor subió (entrenamiento), actualizamos referencia sin efectos
         if (current > prev) {
             prevValueRef.current = current;
+            const diff = Math.round(current - prev);
+            setReduction(diff); // Reutilizamos el estado de reducción para mostrar el número
+            setFlash(true);
+
+            const timer = setTimeout(() => {
+                setReduction(null);
+                setFlash(false);
+            }, 1000);
         }
+      
     }, [value, isFatiga, label]);
 
     return (
