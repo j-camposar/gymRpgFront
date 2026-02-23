@@ -16,3 +16,11 @@ export async function viewMucleCharacter(idUser:string){
     });
 
 }
+export async function analyzeBiometrics(imgSrc:string,character_id:string ){
+    return await apiFetch(`/characters/analisis/${character_id}`, {
+        method: 'POST',
+        body:  JSON.stringify({"imgSrc":imgSrc}),
+        headers: { 'Content-Type': 'application/json' },
+    });
+
+}
