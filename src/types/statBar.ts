@@ -43,8 +43,9 @@ export interface StatsResume{
     data:StatResumeData ;
     onClose:() =>void;
 }
-interface StatResumeData{
+export interface StatResumeData{
     totalXp:string;
+    totalVolume:string;
     leveledUpMuscles:[
     {
         name:string;

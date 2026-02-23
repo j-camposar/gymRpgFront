@@ -24,3 +24,12 @@ export interface CreateCharacterDto {
   password:string;
   sexo:string;
 }
+
+export interface Stats {
+  bodyFat: number;
+  muscleMass: number;
+  estWeight: number;
+  energy: number;
+  xp: number;
+  nextLevelXp: number;
+}

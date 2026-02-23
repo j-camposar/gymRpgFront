@@ -12,7 +12,11 @@ const WorkoutSummary = ({ data, onClose }:StatsResume) => (
         <span className="text-gray-400 text-xs uppercase">XP Total Ganada</span>
         <span className="text-white font-mono">+{data.totalXp}</span>
       </div>
-      {data.leveledUpMuscles.map(m => (
+        <div className="flex justify-between border-b border-gray-800 pb-2 mb-4">
+            <span className="text-gray-400 text-xs uppercase">Tonelaje Movido</span>
+            <span className="text-cyan-400 font-mono font-bold">{data.totalVolume} kg</span>
+        </div>
+      {data.leveledUpMuscles?.map(m => (
         <div key={m.name} className="flex justify-between items-center bg-blue-900/20 p-2 rounded border border-blue-400/50">
           <span className="text-blue-300 text-xs font-bold uppercase">{m.name}</span>
           <span className="text-yellow-400 font-black italic tracking-tighter">

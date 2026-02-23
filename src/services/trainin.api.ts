@@ -5,7 +5,8 @@ export function registerTraining(body: {
         reps: number;
         weight: number;
         difficulty: number;
-        characterId:string
+        characterId:string;
+        sessionId:string
     }) {
     return apiFetch(`/training`, {
         method: 'POST',
@@ -19,5 +20,22 @@ export function registerDescanso(body: {
     return apiFetch(`/training/descanso`, {
         method: 'POST',
         body: JSON.stringify(body),
+    });
+}
+export function createTraining(
+        characterId:string
+        ) {
+    return apiFetch(`/training/crearEntrenamiento`, {
+        method: 'POST',
+        body: JSON.stringify({"characterId":characterId}),
+    });
+}
+export function finishWorkOut(
+        characterId:string,
+        sessionId:string
+    ) {
+    return apiFetch(`/training/terminarEntrenamiento`, {
+        method: 'POST',
+        body: JSON.stringify({"characterId":characterId,"sessionId":sessionId}),
     });
 }

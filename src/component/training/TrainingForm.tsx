@@ -7,7 +7,7 @@ import { registerTraining } from "@/services/trainin.api";
 import { TrainingFormProps } from "@/types/training";
 import { StatsResume } from "@/types/statBar";
 
-export default function TrainingForm({ onClose, character_id, setRefreshTrigger, onSuccess }: TrainingFormProps) {
+export default function TrainingForm({ onClose, character_id, sessionId,setRefreshTrigger, onSuccess }: TrainingFormProps) {
   const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
   const [reps, setReps] = useState(10);
   const [weight, setWeight] = useState(20);
@@ -26,7 +26,8 @@ export default function TrainingForm({ onClose, character_id, setRefreshTrigger,
         reps,
         weight,
         difficulty,
-        characterId: character_id
+        characterId: character_id,
+        sessionId:sessionId
       }) as StatsResume;
 
       // 2. Si existe la prop onSuccess, le enviamos la data del resumen
