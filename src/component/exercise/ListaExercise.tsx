@@ -64,7 +64,7 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
 
                                 <div className="flex-1 min-w-0">
                                     <div className="flex flex-col mb-2">
-                                        <h3 className="text-lg md:text-2xl font-black text-white uppercase italic tracking-tighter truncate">
+                                        <h3 className="text-lg md:text-2xl font-black text-white uppercase italic tracking-tighter ">
                                             {ex.name}
                                         </h3>
                                         <span className="text-[8px] text-gray-700 font-mono">
@@ -75,7 +75,7 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
                                     <div className="flex flex-wrap gap-1.5">
                                         {ex.muscles.map((musculo, index) => (
                                             <div key={index} className="flex items-center gap-1.5 bg-blue-900/10 px-2 py-1 rounded-md border border-blue-500/10">
-                                                <span className="text-[9px] text-gray-400 font-bold uppercase truncate max-w-[60px]">
+                                                <span className="text-[9px] text-gray-400 font-bold uppercase  max-w-[60px]">
                                                     {musculo.muscleId.name}
                                                 </span>
                                                 <span className="text-[10px] text-blue-500 font-black italic">
