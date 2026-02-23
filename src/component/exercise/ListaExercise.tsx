@@ -10,7 +10,7 @@ export default function ListaExercise({ setSelectedExercise }: ListaExerciseProp
     const [exercises, setExercises] = useState<Exercise[]>([]);
     const [loading, setLoading] = useState(true);
 
-    const POSTERIOR_LIST = ["espalda", "tríceps", "glúteos", "femorales", "isquiotibiales"];
+    const POSTERIOR_LIST = ["espalda alta","glúteos","femorales","gemelos", "tríceps", "dorsales"];
 
     useEffect(() => {
         getExercises().then(setExercises).finally(() => setLoading(false));

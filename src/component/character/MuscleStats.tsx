@@ -7,7 +7,7 @@ import BodyMapBack from "../statBar/bodyMapBack";
 
 
 const MuscleStats = ({ stats}: { stats: EstadoActual[]}) => {
-    const POSTERIOR_MUSCLES = ["espalda","glúteos","femorales","gemelos"];
+    const POSTERIOR_MUSCLES = ["espalda alta","glúteos","femorales","gemelos", "tríceps", "dorsales"]; ["espalda alta","glúteos","femorales","gemelos", "tríceps", "dorsales"];
 
   return (
     <div className="flex flex-col w-full h-full divide-y divide-gray-900 bg-[#050505] overflow-y-auto">

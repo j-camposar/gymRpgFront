@@ -28,11 +28,20 @@ const BodyMapBack = ({
           strokeWidth="1.5" 
         />
 
-        {/* ESPALDA / LATS */}
-        <g id="espalda">
-          <path style={getMuscleStyle('espalda')} d="M100 80 L 80 95 L 100 110 L 120 95 Z" />
-          <path style={getMuscleStyle('espalda')} d="M98 115 L 75 110 Q 65 140 75 190 L 98 170 Z" />
-          <path style={getMuscleStyle('espalda')} d="M102 115 L 125 110 Q 135 140 125 190 L 102 170 Z" />
+        {/* ESPALDA ALTA (Trapecios y Romboides) */}
+        <g id="espalda-alta">
+          {/* Parte superior/Trapecios */}
+          <path style={getMuscleStyle('espalda alta')} d="M100 80 L 85 85 L 100 95 L 115 85 Z" />
+          {/* Parte media/Romboides */}
+          <path style={getMuscleStyle('espalda alta')} d="M100 98 L 82 105 L 100 125 L 118 105 Z" />
+        </g>
+
+        {/* DORSALES (Lats - El "V-Taper") */}
+        <g id="dorsales">
+          {/* Dorsal Izquierdo */}
+          <path style={getMuscleStyle('dorsales')} d="M80 110 Q 60 140 70 195 L 95 175 L 95 115 Z" />
+          {/* Dorsal Derecho */}
+          <path style={getMuscleStyle('dorsales')} d="M120 110 Q 140 140 130 195 L 105 175 L 105 115 Z" />
         </g>
 
         {/* HOMBROS POSTERIORES */}

@@ -41,7 +41,8 @@ const BodyMapFront = ({
         {/* BÍCEPS (Independiente) */}
         <path id="biceps-l" style={getMuscleStyle('biceps')} d="M65 125 L 75 125 L 74 150 L 62 148 Z" />
         <path id="biceps-r" style={getMuscleStyle('biceps')} d="M135 125 L 125 125 L 126 150 L 138 148 Z" />
-
+        
+ 
         {/* CORE / ABDOMINALES */}
         <g id="core">
           <rect style={getMuscleStyle('core')} x="88" y="140" width="24" height="12" rx="2" />
