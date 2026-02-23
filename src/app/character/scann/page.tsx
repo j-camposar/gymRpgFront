@@ -25,7 +25,7 @@ export default function NeuralScan() {
             try {
                 // Pasamos 'imageSrc' directamente, NO 'imgSrc' del estado
                 const results = await analyzeBiometrics(imageSrc, character_id);
-                alert(results);
+                alert(JSON.stringify(results));
                 console.log("Resultados del Arca:", results);
             } catch (error) {
                 console.error("Error en el escaneo:", error);
