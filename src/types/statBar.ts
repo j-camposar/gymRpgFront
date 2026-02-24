@@ -47,6 +47,7 @@ export interface StatResumeData{
     totalXp:string;
     totalVolume:string;
     calories:number;
+    feedback:string;
     leveledUpMuscles:[
     {
         name:string;

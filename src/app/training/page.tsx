@@ -14,6 +14,7 @@ import WorkoutSummary from '@/component/statBar/workResult';
 import PlnatillaState from '@/component/statBar/PlantillaState';
 import MissionList from '@/component/mision/MisionList';
 import RecentSeriesLogs from '@/component/training/RecentSeriesLogs';
+import GymConfirmModal from '@/component/general/GymConfirmModal';
 
 export default function TrainingPage() {
     const [open, setOpen] = useState(false);
@@ -29,7 +30,8 @@ export default function TrainingPage() {
     const [isStatsOpen, setIsStatsOpen] = useState(false);
     const [isMissionsOpen, setIsMissionsOpen] = useState(false);
     const [workoutResult, setWorkoutResult] = useState<StatResumeData | null>(null);
-
+    const [showFinishConfirm, setShowFinishConfirm] = useState(false); // Nuevo estado
+    
     const handleRefresh = () => setRefreshTrigger(prev => !prev);
 
     // Fetch de logs
@@ -52,15 +54,27 @@ export default function TrainingPage() {
         } catch (error) { console.error(error); } finally { setLoading(false); }
     };
 
-    const handleFinishTraining = async () => {
-        if (!activeTrainingId) return;
+  const handleFinishTraining = async () => {
+    if (!activeTrainingId) return;
+    
+    // En lugar de window.confirm, abrimos nuestro modal personalizado
+    setShowFinishConfirm(true);
+};
+
+    // Esta nueva función se ejecutará cuando el usuario confirme dentro del modal
+    const confirmFinish = async () => {
+        setShowFinishConfirm(false);
         setLoading(true);
         try {
-            const res = await finishWorkOut(character_id, activeTrainingId) as StatsResume;
+            const res = await finishWorkOut(character_id, activeTrainingId!) as StatsResume;
             setWorkoutResult(res.data);
             setActiveTrainingId(null);
             handleRefresh();
-        } catch (error) { console.error(error); } finally { setLoading(false); }
+        } catch (error) { 
+            console.error(error); 
+        } finally { 
+            setLoading(false); 
+        }
     };
 
     return (
@@ -185,6 +199,12 @@ export default function TrainingPage() {
                 <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black/60 backdrop-blur-3xl p-4">
                     <WorkoutSummary data={workoutResult} onClose={() => { setWorkoutResult(null); handleRefresh(); }} />
                 </div>
+            )}
+            {showFinishConfirm && (
+                <GymConfirmModal 
+                    onConfirm={confirmFinish} 
+                    onCancel={() => setShowFinishConfirm(false)} 
+                />
             )}
         </main>
     );

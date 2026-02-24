@@ -30,7 +30,6 @@ export default function RegisterCharacter() {
    
     const router = useRouter();
     const onSubmit = async (data: FormData) => {
-        console.log("Intentando fetch con datos:", data);
         try {
             await createCharacter(data);
             alert(`¡Personaje ${data.nick} inicializado con éxito!`);
@@ -137,9 +136,6 @@ export default function RegisterCharacter() {
                             </select>
                             {errors.objetivo && <p className="text-red-500 text-[9px] mt-1 italic uppercase">Requerido</p>}
                         </div>
-                        
-                        {/* Peso y Estatura... (Sigue tu lógica anterior) */}
-
                     </div>
 
                     <button 

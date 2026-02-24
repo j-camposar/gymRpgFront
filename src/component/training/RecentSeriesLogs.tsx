@@ -33,7 +33,7 @@ export default function RecentSeriesLogs({ logs }: { logs: Log[] }) {
              <span className="text-[10px] text-gray-500 font-mono">Total Series: {logs.length}</span>
           )}
         </div>
-
+       
         <div className={`grid gap-2 overflow-y-auto custom-scrollbar pb-10 ${isExpanded ? 'flex-1' : 'grid-cols-2 md:grid-cols-4'}`}>
           {displayLogs.length > 0 ? (
             displayLogs.map((log) => (

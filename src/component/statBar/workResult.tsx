@@ -20,6 +20,11 @@ const WorkoutSummary = ({ data, onClose }:StatsResume) => (
             <span className="text-gray-400 text-xs uppercase">Calorias Quemadas</span>
             <span className="text-cyan-400 font-mono font-bold">{data.calories} kcal</span>
         </div>
+         <div className="feedback-container">
+            <p className="terminal-text">
+            <span className="blink"></span> {data.feedback}
+            </p>
+        </div>
       {data.leveledUpMuscles?.map(m => (
         <div key={m.name} className="flex justify-between items-center bg-blue-900/20 p-2 rounded border border-blue-400/50">
           <span className="text-blue-300 text-xs font-bold uppercase">{m.name}</span>
