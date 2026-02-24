@@ -41,6 +41,9 @@ export default function RecentSeriesLogs({ logs }: { logs: Log[] }) {
                 key={log._id} 
                 className="bg-blue-900/10 border border-gray-800 p-3 rounded-lg flex flex-col justify-center animate-in slide-in-from-bottom-2"
               >
+                <div className="flex justify-between items-start">
+                  <span className="text-[10px] font-bold text-gray-400 truncate uppercase">{log.exerciseName || 'Ejercicio'}</span>
+                </div>
                 <div className="flex items-baseline gap-1 mt-1">
                   <span className="text-xl font-black text-white">{log.weight}</span>
                   <span className="text-[10px] text-gray-500 uppercase">kg</span>
