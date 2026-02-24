@@ -8,13 +8,17 @@ const WorkoutSummary = ({ data, onClose }:StatsResume) => (
     </h2>
     
     <div className="space-y-3 mb-6">
-      <div className="flex justify-between border-b border-gray-800 pb-2">
-        <span className="text-gray-400 text-xs uppercase">XP Total Ganada</span>
-        <span className="text-white font-mono">+{data.totalXp}</span>
-      </div>
+        <div className="flex justify-between border-b border-gray-800 pb-2">
+            <span className="text-gray-400 text-xs uppercase">XP Total Ganada</span>
+            <span className="text-white font-mono">+{data.totalXp}</span>
+        </div>
         <div className="flex justify-between border-b border-gray-800 pb-2 mb-4">
             <span className="text-gray-400 text-xs uppercase">Tonelaje Movido</span>
             <span className="text-cyan-400 font-mono font-bold">{data.totalVolume} kg</span>
+        </div>
+        <div className="flex justify-between border-b border-gray-800 pb-2 mb-4">
+            <span className="text-gray-400 text-xs uppercase">Calorias Quemadas</span>
+            <span className="text-cyan-400 font-mono font-bold">{data.calories} kcal</span>
         </div>
       {data.leveledUpMuscles?.map(m => (
         <div key={m.name} className="flex justify-between items-center bg-blue-900/20 p-2 rounded border border-blue-400/50">

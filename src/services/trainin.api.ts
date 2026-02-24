@@ -39,3 +39,10 @@ export function finishWorkOut(
         body: JSON.stringify({"characterId":characterId,"sessionId":sessionId}),
     });
 }
+
+export function getSessionLogs(  sessionId:string){
+    return apiFetch(`/training/session-logs/${sessionId}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    });
+}

@@ -46,6 +46,7 @@ export interface StatsResume{
 export interface StatResumeData{
     totalXp:string;
     totalVolume:string;
+    calories:number;
     leveledUpMuscles:[
     {
         name:string;

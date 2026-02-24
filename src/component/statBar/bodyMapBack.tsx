@@ -47,7 +47,10 @@ const BodyMapBack = ({
         {/* HOMBROS POSTERIORES */}
         <path id="shoulders-l" style={getMuscleStyle('hombros')} d="M62 100 Q 55 105 65 130 L 78 135 L 75 100 Z" />
         <path id="shoulders-r" style={getMuscleStyle('hombros')} d="M138 100 Q 145 105 135 130 L 122 135 L 125 100 Z" />
-
+        {/* BÍCEPS (Independiente) */}
+        <path id="biceps-l" style={getMuscleStyle('biceps')} d="M65 125 L 75 125 L 74 150 L 62 148 Z" />
+        <path id="biceps-r" style={getMuscleStyle('biceps')} d="M135 125 L 125 125 L 126 150 L 138 148 Z" />
+        
         {/* TRÍCEPS (Independiente de Bíceps) */}
         <path id="triceps-l" style={getMuscleStyle('tríceps')} d="M55 140 L 68 145 L 65 190 L 50 185 Z" />
         <path id="triceps-r" style={getMuscleStyle('tríceps')} d="M145 140 L 132 145 L 135 190 L 150 185 Z" />

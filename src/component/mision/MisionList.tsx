@@ -7,10 +7,12 @@ import StatBar from '../statBar/statBar';
 
 export default function MissionList({ 
   character_id, 
-  refreshTrigger 
+  refreshTrigger ,
+  setRefreshTrigger
 }: { 
   character_id: string; 
-  refreshTrigger: boolean 
+  refreshTrigger: boolean,
+  setRefreshTrigger:()=>void;
 }) {
   const [misiones, setMisiones] = useState<Mission[]>([]);
   const [loading, setLoading] = useState(true);
@@ -33,6 +35,7 @@ export default function MissionList({
     try {
       await reclamarMision(misionId, character_id);
       setMisiones(prev => prev.map(m => m.id === misionId ? { ...m, claimed: true } : m));
+      setRefreshTrigger();
     } catch (error) {
       alert("Error al reclamar recompensa");
     }
