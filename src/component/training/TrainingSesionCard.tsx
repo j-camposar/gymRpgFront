@@ -36,7 +36,7 @@ const TrainingSesionCard = ({ session }: { session: HistoryTraining }) => {
                         {format(new Date(session.fecha), "eeee dd, MMMM", { locale: es })}
                     </p>
                     <h3 className="text-sm font-black text-white uppercase italic tracking-tight">
-                        Incursión: {session.nombre}
+                        {session.nombre}
                     </h3>
                 </div>
              

@@ -66,7 +66,7 @@ const ExerciseItem = ({ ex , trainingId}: { ex: HistoryExercise , trainingId:str
                         <span className="text-right">Progreso</span>
                     </div>
                     
-                    {series.map((set: any, sIdx: number) => {
+                    {series.map((set: HistorySeries, sIdx: number) => {
                         // Lógica de comparación con la serie anterior
                         const isUp = set.progreso=="SUBISTE"?true:false;
                         const isEqual = set.progreso=="ESTABLE"?true:false;

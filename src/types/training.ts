@@ -23,6 +23,7 @@ export interface HistorySeries {
     peso: number; 
     reps: number;
     id:string;
+    progreso:string
 }
 
 export interface HistoryExercise {
