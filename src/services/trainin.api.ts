@@ -46,3 +46,23 @@ export function getSessionLogs(  sessionId:string){
         headers: { 'Content-Type': 'application/json' },
     });
 }
+export function buscarEntrenamientos(start:string, end:string,character_id:string){
+    return apiFetch(`/training/history/${start}/${end}/${character_id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    });
+}       
+
+export function getSessionsHistroy(session_id:string){
+    return apiFetch(`/training/history/sessions/${session_id}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    });
+}
+
+export function getEjercicios(trainingId:string, exercise_id:string, character_id:string){
+    return apiFetch(`/training/history/exercise/${character_id}/${exercise_id}/${trainingId}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+    });
+}

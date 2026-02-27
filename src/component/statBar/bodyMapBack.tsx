@@ -6,7 +6,6 @@ const BodyMapBack = ({
   highlightColor = '#3b82f6', 
   className = "w-full max-w-[320px]" 
 }: BodyMapProps) => {
-
   const getMuscleStyle = (muscleId: string) => {
     // Normalizamos para comparar con los códigos que vienen del backend
     const isActive = activeMuscles.includes(muscleId.toLowerCase().trim());

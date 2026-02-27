@@ -1,5 +1,6 @@
 import { StatsResume } from "./statBar";
-
+import {Exercise} from '@/types/exercise'
+ 
 export type TrainingFormProps = {
   onClose: () => void;
   character_id: string;
@@ -18,3 +19,37 @@ export interface Log {
   difficulty:number;
   calories:number;
 }
+export interface HistorySeries {
+    peso: number; 
+    reps: number;
+    id:string;
+}
+
+export interface HistoryExercise {
+    nombre: string;
+    cargaMax: number;
+    descanso: number;
+    estimate1RM:number;
+    seriesCount: number; // Array dinámico de series
+    calorias:number;
+    faigaAcumulada:number;
+    TotalXp:number;
+    exercise_id:string;
+    id:string;
+    musculos: {
+            nombre:string, 
+        }[]
+}
+
+export interface HistoryTraining {
+    id: string;
+    nombre: string;
+    fecha: string; // Formato ISO recomendado para date-fns
+    calorias: number;
+    pesoTotal: number;
+    horaInicio: string;
+    horaFin: string;
+    fatiga: number;
+    ejercicios: HistoryExercise[]; // Array dinámico de ejercicios
+}
+
