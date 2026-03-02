@@ -20,10 +20,12 @@ export interface Log {
   calories:number;
 }
 export interface HistorySeries {
-    peso: number; 
+    weight: number; 
     reps: number;
     id:string;
-    progreso:string
+    progreso:string;
+    exerciseId:string;
+    difficulty:number
 }
 
 export interface HistoryExercise {

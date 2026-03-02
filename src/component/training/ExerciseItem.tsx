@@ -74,7 +74,7 @@ const ExerciseItem = ({ ex , trainingId}: { ex: HistoryExercise , trainingId:str
                         return (
                             <div key={sIdx} className="grid grid-cols-4 text-[13px] font-mono py-1.5 border-b border-white/5 items-center">
                                 <span className="text-gray-500 text-[13px]">0{sIdx + 1}</span>
-                                <span className="text-white font-bold text-[15px]">{set.peso}kg</span>
+                                <span className="text-white font-bold text-[15px]">{set.weight}kg</span>
                                 <span className="text-gray-300 text-[15px]">{set.reps}</span>
                                 
                                 {/* Indicador Visual de Progreso */}

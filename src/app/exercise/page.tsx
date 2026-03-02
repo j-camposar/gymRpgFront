@@ -5,5 +5,6 @@ import { useState } from 'react';
 
 export default function ExercisesPage() {
     const [selectedExercise, setSelectedExercise] = useState<Exercise | null>(null);
-    return (<ListaExercise setSelectedExercise={setSelectedExercise} />);
+    const [ultimoRegistro, setUltimoRegistro] = useState<Exercise | null>(null);
+    return (<ListaExercise setSelectedExercise={setSelectedExercise} setUltimoRegistro={setUltimoRegistro}  />);
 }

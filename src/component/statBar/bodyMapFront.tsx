@@ -6,7 +6,6 @@ const BodyMapFront = ({
   highlightColor = '#3b82f6', 
   className = "w-72" 
 }: BodyMapProps) => {
-    console.log(activeMuscles)
 
  const getMuscleStyle = (muscleId: string) => {
     // Normalizamos para que coincida con tus códigos: 'quads', 'biceps', 'pecho', etc.
