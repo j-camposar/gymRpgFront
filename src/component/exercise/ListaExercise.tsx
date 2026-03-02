@@ -43,7 +43,7 @@ export default function ListaExercise({ setSelectedExercise, setUltimoRegistro}:
 
     // LÓGICA DE FILTRADO Y PRIORIZACIÓN
     const ejerciciosFiltradosYOrdenados = useMemo(() => {
-        let filtrados = exercises.filter(ex => {
+        const filtrados = exercises.filter(ex => {
             if (filtrosActivos.length === 0) return true;
             
             // Mapeo lógico: Si el usuario pulsa "brazo", buscamos bíceps o tríceps
